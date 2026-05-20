@@ -1,0 +1,95 @@
+---
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Double Cut Studios — Event Video, Aerial, VFX/CGI, Photography' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <meta name="generator" content={Astro.generator} />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <title>{title} | Double Cut Studios</title>
+</head>
+<body>
+  <Nav />
+  <main>
+    <slot />
+  </main>
+  <Footer />
+  <div id="cursor-glow" aria-hidden="true"></div>
+  <script>
+    import { initScrollAnimations, initStaggerAnimations, initHeroAnimations, initBlobDrift, initWiggleHover } from '../scripts/animations';
+
+    function init() {
+      initScrollAnimations();
+      initStaggerAnimations();
+      initHeroAnimations();
+      initBlobDrift();
+      initWiggleHover();
+    }
+
+    init();
+    document.addEventListener('astro:page-load', init);
+  </script>
+  <style>
+    #cursor-glow {
+      position: fixed;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(20, 155, 155, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      transition: left 0.08s ease, top 0.08s ease;
+      z-index: 0;
+      top: 50%;
+      left: 50%;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #cursor-glow {
+        display: none;
+      }
+    }
+  </style>
+  <script>
+    const glow = document.getElementById('cursor-glow');
+    if (glow) {
+      document.addEventListener('mousemove', (e) => {
+        glow.style.left = e.clientX + 'px';
+        glow.style.top = e.clientY + 'px';
+      });
+    }
+
+    // Easter egg: tab title changes when user switches away
+    const originalTitle = document.title;
+    const awayMessages = [
+      "Hey, come back!",
+      "We miss you already …",
+      "Still making great stuff over here",
+      "Your story won't tell itself",
+    ];
+    let awayMsgIndex = 0;
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        document.title = awayMessages[awayMsgIndex % awayMessages.length];
+        awayMsgIndex++;
+      } else {
+        document.title = originalTitle;
+      }
+    });
+  </script>
+</body>
+</html>

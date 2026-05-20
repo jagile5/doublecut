@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&display=swap');
+@import "tailwindcss";
+
+/* Reset default blue borders — in base layer so Tailwind utilities can override */
+@layer base {
+  *, *::before, *::after {
+    border-color: transparent;
+    box-sizing: border-box;
+  }
+}
+
+:root {
+  --color-primary: #149B9B;
+  --color-accent-1: #E04560;
+  --color-accent-2: #ED9C74;
+  --color-bg-light: #F7F7F7;
+  --color-bg-dark: #262626;
+  --color-text-light: #F7F7F7;
+  --color-text-dark: #262626;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-light);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+  display: block;
+  border: none;
+  outline: none;
+  margin: 0;
+  padding: 0;
+}
+
+section {
+  outline: none;
+}
+
+/* Organic border radius for cards */
+.rounded-2xl {
+  border-radius: 1.25rem;
+}
+
+/* Light background for alternating sections — matches wave fill */
+.bg-warm-light {
+  background-color: var(--color-bg-light);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.04em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+::selection {
+  background-color: var(--color-primary);
+  color: var(--color-bg-dark);
+}
+
+/* Scroll animation base states */
+[data-animate] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: all 0.5s ease-out;
+}
+
+[data-animate].animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-animate="fade"] {
+  transform: none;
+}
+
+[data-animate-immediate] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: all 0.5s ease-out;
+}
+
+[data-animate-immediate="fade"] {
+  transform: none;
+}
+
+[data-animate-immediate].animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-animate], [data-animate-immediate] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Teal gradient fade between sections */
+.gradient-teal-fade {
+  background: linear-gradient(135deg, #0d6e6e 0%, #262626 60%);
+}
+
+/* Nav link styles */
+.nav-link {
+  position: relative;
+  transition: color 0.2s ease-out;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  transition: width 0.5s ease-out;
+}
+
+.nav-link:hover::before {
+  width: 100%;
+}
+
+.nav-active {
+  color: var(--color-accent-1);
+}
+
+.nav-active::before {
+  display: none;
+}
+
+.nav-active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--color-accent-1);
+  border-color: var(--color-accent-1);
+  border-radius: 1px;
+}
+
+/* Grain overlay utility — real grain texture */
+.grain-overlay {
+  position: relative;
+}
+
+.grain-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/darkgrain.jpg');
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  opacity: 0.18;
+  pointer-events: none;
+  z-index: 10;
+  mix-blend-mode: overlay;
+  border-radius: inherit;
+}
+
+/* Hover weight — fast in, slow return on mouse-leave */
+.group, a[class*="hover:"], button[class*="hover:"] {
+  transition-duration: 0.5s;
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.group:hover, a[class*="hover:"]:hover, button[class*="hover:"]:hover {
+  transition-duration: 0.3s;
+  transition-timing-function: cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+/* Explicit border-color resets for intentional borders */
+.border-teal { border-color: var(--color-primary); }
+.border-coral { border-color: var(--color-accent-1); }
+.border-white-10 { border-color: rgba(255,255,255,0.1); }
+.border-white-5 { border-color: rgba(255,255,255,0.05); }
+.border-teal-30 { border-color: rgba(20,155,155,0.3); }
+
+/* Blob drift — gentle floating animation for decorative blobs */
+@keyframes blob-drift {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(calc(-1 * var(--blob-drift-y, 8px))) rotate(2deg);
+  }
+}
+
+/* Wiggle on hover — almost imperceptible nudge for cards */
+@keyframes wiggle {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-0.3deg); }
+  50% { transform: rotate(0.2deg); }
+  75% { transform: rotate(-0.1deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.wiggle-active {
+  animation: wiggle 0.6s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wiggle-active {
+    animation: none;
+  }
+  [data-blob-drift] {
+    animation: none !important;
+  }
+}
+
+@theme {
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --color-primary: #149B9B;
+  --color-accent-1: #E04560;
+  --color-accent-2: #ED9C74;
+  --color-bg-light: #F7F7F7;
+  --color-bg-dark: #262626;
+  --color-text-light: #F7F7F7;
+  --color-text-dark: #262626;
+}

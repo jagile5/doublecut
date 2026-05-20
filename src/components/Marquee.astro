@@ -1,0 +1,150 @@
+---
+interface Props {
+  items: string[];
+  speed?: number;
+  reverse?: boolean;
+}
+
+const { items, speed = 30, reverse = false } = Astro.props;
+const tripled = [...items, ...items, ...items];
+---
+
+<div class="marquee-track overflow-hidden py-3 bg-[var(--color-bg-dark)] border-y border-teal-30" style="border-color: rgba(20,155,155,0.3)">
+  <div
+    class={`marquee-inner flex whitespace-nowrap gap-16 ${reverse ? 'marquee-reverse' : ''}`}
+    style={`animation-duration: ${speed}s`}
+  >
+    {tripled.map((item, i) => (
+      <span class="marquee-item text-sm font-medium tracking-widest uppercase text-[var(--color-text-light)] opacity-60 flex items-center" data-marquee-index={i}>
+        {item}
+        <span class="text-[var(--color-primary)] ml-16">&#10022;</span>
+      </span>
+    ))}
+  </div>
+  <!-- Ripple container — wave effect expands from mouse position on hover -->
+  <div class="marquee-ripple-container" aria-hidden="true"></div>
+</div>
+
+<script>
+function initMarqueeRipple() {
+  const tracks = document.querySelectorAll('.marquee-track');
+
+  tracks.forEach((track) => {
+    track.addEventListener('mousemove', (e) => {
+      const rect = track.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      // Set CSS custom properties for the ripple position
+      track.style.setProperty('--ripple-x', `${x}px`);
+      track.style.setProperty('--ripple-y', `${y}px`);
+
+      // Add active class to trigger ripple
+      track.classList.add('marquee-ripple-active');
+    });
+
+    track.addEventListener('mouseleave', () => {
+      track.classList.remove('marquee-ripple-active');
+    });
+  });
+}
+
+initMarqueeRipple();
+document.addEventListener('astro:page-load', initMarqueeRipple);
+</script>
+
+<style>
+.marquee-track {
+  position: relative;
+  --ripple-x: 50%;
+  --ripple-y: 50%;
+}
+
+.marquee-ripple-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 5;
+}
+
+/* The ripple/wave effect — a radial glow that expands from the mouse position */
+.marquee-ripple-active .marquee-ripple-container {
+  background: radial-gradient(
+    circle 120px at var(--ripple-x) var(--ripple-y),
+    rgba(20, 155, 155, 0.15) 0%,
+    rgba(20, 155, 155, 0.06) 40%,
+    transparent 70%
+  );
+}
+
+/* Teal glow on items near cursor — items brighten within the ripple zone */
+.marquee-ripple-active .marquee-item {
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+/* Secondary wave ripple — delayed, larger, softer for that wave feeling */
+.marquee-ripple-active .marquee-ripple-container::before {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  left: var(--ripple-x);
+  top: var(--ripple-y);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(20, 155, 155, 0.08) 0%,
+    transparent 60%
+  );
+  animation: marquee-wave-pulse 1.5s ease-out infinite;
+}
+
+.marquee-inner {
+  animation: marquee-scroll linear infinite;
+  width: max-content;
+}
+
+.marquee-track:hover .marquee-inner {
+  animation-play-state: paused;
+}
+
+.marquee-track:hover .marquee-item {
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.marquee-reverse {
+  animation-direction: reverse;
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-33.333%);
+  }
+}
+
+@keyframes marquee-wave-pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.6);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.4);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-inner {
+    animation: none;
+  }
+  .marquee-ripple-active .marquee-ripple-container::before {
+    animation: none;
+  }
+}
+</style>

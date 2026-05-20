@@ -1,0 +1,37 @@
+---
+const stats = [
+  { value: '150+', label: 'Events Filmed', color: 'text-[var(--color-accent-2)]' },
+  { value: '10+', label: 'Years Experience', color: 'text-[var(--color-accent-2)]' },
+  { value: '4', label: 'Services, 1 Team', color: 'text-[var(--color-accent-2)]' },
+  { value: '∞', label: 'Creative Ambition', color: 'text-[var(--color-accent-1)]' },
+];
+---
+
+<section class="grain-overlay py-24 md:py-32 px-6 bg-[var(--color-bg-dark)] relative overflow-hidden">
+  <div class="max-w-7xl mx-auto relative z-20">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12" data-stagger>
+      {stats.map(stat => (
+        <div
+          data-stagger-item
+          data-animate
+          data-wiggle
+          class="text-center bg-white/5 rounded-2xl py-8 px-4 hover:bg-white/10 hover:-translate-y-3 transition-all duration-500 ease-out"
+          style="border-color: rgba(255,255,255,0.05)"
+        >
+          <div class={`font-display text-5xl md:text-7xl leading-none mb-2 ${stat.color}`}>
+            {stat.value}
+          </div>
+          <div class="font-body text-sm md:text-base text-white/50 uppercase tracking-wider">
+            {stat.label}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+  <!-- Wave bottom — #F7F7F7 pours into Testimonials below -->
+  <div class="absolute bottom-0 left-0 w-full pointer-events-none z-20" aria-hidden="true">
+    <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto block" preserveAspectRatio="none">
+      <path d="M0 40C240 80 480 0 720 40C960 80 1200 0 1440 40V80H0V40Z" fill="#F7F7F7"/>
+    </svg>
+  </div>
+</section>

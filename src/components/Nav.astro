@@ -1,0 +1,169 @@
+---
+const pathname = Astro.url.pathname;
+const isActive = (path: string) => path === '/' ? pathname === '/' : pathname.startsWith(path);
+
+const navLinks = [
+  { label: 'Work', href: '/work' },
+  { label: 'Services', href: '/services' },
+  { label: 'About', href: '/about' },
+];
+---
+
+<header id="main-nav" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-out">
+  <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="/" id="nav-logo" title="est. NZ → YVR" class="font-display text-2xl tracking-wider text-white">
+      DOUBLE CUT STUDIOS
+    </a>
+
+    <!-- Desktop links -->
+    <div class="hidden md:flex items-center gap-8">
+      {navLinks.map(link => (
+        <a
+          href={link.href}
+          class={`nav-link text-sm font-body uppercase tracking-wide text-white/80 hover:text-[var(--color-primary)] transition-all duration-500 ease-out ${isActive(link.href) ? 'nav-active' : ''}`}
+        >
+          {link.label}
+        </a>
+      ))}
+      <a
+        href="/contact"
+        class="ml-2 px-6 py-2.5 bg-[var(--color-primary)] text-[var(--color-bg-dark)] text-sm font-body font-semibold uppercase tracking-wide rounded-full hover:shadow-[0_4px_20px_rgba(20,155,155,0.3)] hover:-translate-y-3 transition-all duration-500 ease-out"
+      >
+        Get in Touch
+      </a>
+    </div>
+
+    <!-- Mobile hamburger -->
+    <button
+      id="nav-toggle"
+      class="md:hidden flex flex-col gap-1.5 z-50"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+    >
+      <span class="block w-6 h-0.5 bg-white transition-all duration-300 ease-out origin-center" id="bar1"></span>
+      <span class="block w-6 h-0.5 bg-white transition-all duration-300 ease-out" id="bar2"></span>
+      <span class="block w-6 h-0.5 bg-white transition-all duration-300 ease-out origin-center" id="bar3"></span>
+    </button>
+  </nav>
+
+  <!-- Mobile overlay -->
+  <div id="mobile-menu" class="fixed inset-0 bg-[var(--color-bg-dark)] flex flex-col items-center justify-center gap-8 transform translate-x-full transition-transform duration-300 ease-out md:hidden">
+    {navLinks.map(link => (
+      <a
+        href={link.href}
+        class={`font-display text-4xl tracking-wider hover:text-[var(--color-primary)] transition-all duration-500 ease-out ${isActive(link.href) ? 'text-[var(--color-accent-1)]' : 'text-white'}`}
+      >
+        {link.label}
+      </a>
+    ))}
+    <a
+      href="/contact"
+      class="mt-4 px-8 py-3 bg-[var(--color-primary)] text-[var(--color-bg-dark)] font-display text-2xl tracking-wider rounded-full hover:shadow-[0_4px_20px_rgba(20,155,155,0.3)] hover:-translate-y-3 transition-all duration-500 ease-out"
+    >
+      Get in Touch
+    </a>
+  </div>
+</header>
+
+<script>
+  const nav = document.getElementById('main-nav');
+  const toggle = document.getElementById('nav-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const bar1 = document.getElementById('bar1');
+  const bar2 = document.getElementById('bar2');
+  const bar3 = document.getElementById('bar3');
+  let menuOpen = false;
+
+  function handleScroll() {
+    if (!nav) return;
+    if (window.scrollY > 60) {
+      nav.classList.add('bg-[var(--color-bg-dark)]', 'shadow-lg');
+      nav.classList.remove('bg-transparent');
+    } else {
+      nav.classList.remove('bg-[var(--color-bg-dark)]', 'shadow-lg');
+      nav.classList.add('bg-transparent');
+    }
+  }
+  window.addEventListener('scroll', handleScroll);
+  handleScroll();
+
+  toggle?.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    toggle.setAttribute('aria-expanded', String(menuOpen));
+    if (menuOpen) {
+      menu?.classList.remove('translate-x-full');
+      menu?.classList.add('translate-x-0');
+      bar1?.classList.add('rotate-45', 'translate-y-2');
+      bar2?.classList.add('opacity-0');
+      bar3?.classList.add('-rotate-45', '-translate-y-2');
+    } else {
+      menu?.classList.add('translate-x-full');
+      menu?.classList.remove('translate-x-0');
+      bar1?.classList.remove('rotate-45', 'translate-y-2');
+      bar2?.classList.remove('opacity-0');
+      bar3?.classList.remove('-rotate-45', '-translate-y-2');
+    }
+  });
+
+  menu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menuOpen = false;
+      toggle?.setAttribute('aria-expanded', 'false');
+      menu.classList.add('translate-x-full');
+      menu.classList.remove('translate-x-0');
+      bar1?.classList.remove('rotate-45', 'translate-y-2');
+      bar2?.classList.remove('opacity-0');
+      bar3?.classList.remove('-rotate-45', '-translate-y-2');
+    });
+  });
+
+  // Easter egg: 10th click on logo triggers confetti
+  const logo = document.getElementById('nav-logo');
+  let logoClicks = 0;
+  if (logo) {
+    logo.addEventListener('click', (e) => {
+      logoClicks++;
+      if (logoClicks >= 10) {
+        e.preventDefault();
+        logoClicks = 0;
+        fireConfetti(logo);
+      }
+    });
+  }
+
+  function fireConfetti(origin: HTMLElement) {
+    const colors = ['#149B9B', '#E04560', '#EDAB8A', '#F7F7F7', '#FFD700'];
+    const rect = origin.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+
+    for (let i = 0; i < 50; i++) {
+      const el = document.createElement('div');
+      el.style.position = 'fixed';
+      el.style.left = cx + 'px';
+      el.style.top = cy + 'px';
+      el.style.width = (Math.random() * 8 + 4) + 'px';
+      el.style.height = (Math.random() * 8 + 4) + 'px';
+      el.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      el.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+      el.style.pointerEvents = 'none';
+      el.style.zIndex = '9999';
+      document.body.appendChild(el);
+
+      const angle = Math.random() * Math.PI * 2;
+      const velocity = Math.random() * 300 + 150;
+      const dx = Math.cos(angle) * velocity;
+      const dy = Math.sin(angle) * velocity - 200;
+      const rotation = Math.random() * 720 - 360;
+
+      el.animate([
+        { transform: 'translate(0, 0) rotate(0deg)', opacity: 1 },
+        { transform: `translate(${dx}px, ${dy + 400}px) rotate(${rotation}deg)`, opacity: 0 }
+      ], {
+        duration: 1200 + Math.random() * 600,
+        easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+      }).onfinish = () => el.remove();
+    }
+  }
+</script>

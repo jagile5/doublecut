@@ -1,0 +1,104 @@
+---
+
+---
+
+<section class="grain-overlay relative min-h-screen flex items-center justify-center overflow-hidden bg-[var(--color-bg-dark)]">
+  <!-- YouTube showreel background -->
+  <div class="absolute inset-0 z-10 pointer-events-none" id="hero-video-wrap">
+    <div class="absolute inset-0 w-full h-full overflow-hidden">
+      <iframe
+        id="hero-yt-player"
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 min-w-[200vw] min-h-[200vh] w-[200vw] h-[200vh] scale-[0.5] pointer-events-none"
+        src="https://www.youtube.com/embed/UB-VqYYcCH8?autoplay=1&mute=1&loop=1&playlist=UB-VqYYcCH8&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&vq=hd1080"
+        title="Double Cut Studios Showreel"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        allowfullscreen
+      ></iframe>
+    </div>
+    <!-- TODO: tune overlay once real reel is in -->
+    <div class="absolute inset-0 bg-[var(--color-bg-dark)]/40"></div>
+  </div>
+
+  <!-- Parallax gradient background (fallback/dither over video) -->
+  <div class="hero-bg absolute inset-0 will-change-transform z-10" style="background: linear-gradient(135deg, #26262699 0%, #262626aa 25%, #24333377 50%, #1a5c5c44 75%, #149B9B11 100%); filter: blur(0px);"></div>
+
+  <div class="relative z-20 text-center px-6 max-w-4xl mx-auto">
+    <p
+      data-animate-immediate="fade"
+      data-delay="0"
+      class="font-body text-sm uppercase tracking-widest text-[var(--color-primary)] block mb-4"
+    >
+      Double Cut Studios
+    </p>
+    <h1
+      data-animate-immediate
+      data-delay="0.15"
+      class="font-display text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-white leading-none mb-6"
+    >
+      Your Story.<br />Told Beautifully.
+    </h1>
+    <p
+      data-animate-immediate
+      data-delay="0.3"
+      class="font-body text-lg sm:text-xl text-white/70 mb-10 tracking-wide"
+    >
+      Event Video &middot; Aerial &middot; VFX/CGI &middot; Photography
+    </p>
+    <div
+      data-animate-immediate
+      data-delay="0.45"
+      class="flex flex-col sm:flex-row items-center justify-center gap-4"
+    >
+      <a
+        href="/work"
+        class="px-8 py-3.5 bg-[var(--color-primary)] text-[var(--color-bg-dark)] font-display text-xl tracking-wider rounded-full hover:scale-[1.03] hover:-translate-y-3 hover:shadow-[0_4px_20px_rgba(20,155,155,0.3)] transition-all duration-500 ease-out"
+      >
+        See Our Work
+      </a>
+      <a
+        href="/contact"
+        class="px-8 py-3.5 border-2 border-white/30 text-white font-display text-xl tracking-wider rounded-full hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] hover:-translate-y-3 transition-all duration-500 ease-out"
+        style="border-color: rgba(255,255,255,0.3)"
+      >
+        Get in Touch
+      </a>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce z-20">
+    <span class="text-white/40 text-xs font-body uppercase tracking-widest">Scroll</span>
+    <svg class="w-5 h-5 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </div>
+
+</section>
+
+<script>
+  const hero = document.querySelector('.hero-bg') as HTMLElement;
+  if (hero) {
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      hero.style.transform = `translateY(${scrolled * 0.3}px)`;
+    }, { passive: true });
+  }
+
+  // Hide video wrapper if YouTube fails to load (fallback to gradient only)
+  const iframe = document.getElementById('hero-yt-player') as HTMLIFrameElement;
+  const videoWrap = document.getElementById('hero-video-wrap');
+  if (iframe && videoWrap) {
+    iframe.addEventListener('error', () => {
+      videoWrap.style.display = 'none';
+    });
+    // Safety timeout — if no video after 5s, hide wrapper
+    setTimeout(() => {
+      try {
+        if (!iframe.contentWindow) return;
+      } catch {
+        videoWrap.style.display = 'none';
+      }
+    }, 5000);
+  }
+</script>

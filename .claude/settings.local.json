@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm create *)",
+      "Bash(npx create-astro@latest . --template minimal --install --no-git --force)",
+      "Bash(npx astro *)",
+      "Bash(python *)",
+      "Bash(npm run *)",
+      "WebFetch(domain:jagiles.com)",
+      "WebSearch",
+      "WebFetch(domain:www.youtube.com)",
+      "WebFetch(domain:webcache.googleusercontent.com)",
+      "Bash(xxd src/pages/about.astro)",
+      "Bash(node *)",
+      "Bash(xxd)",
+      "Bash(python3 -c ' *)",
+      "WebFetch(domain:deadpilotdesign.com)",
+      "WebFetch(domain:doublevisionnz.com)",
+      "WebFetch(domain:juanmora.co)"
+    ]
+  }
+}

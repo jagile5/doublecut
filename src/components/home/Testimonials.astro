@@ -1,0 +1,62 @@
+---
+const testimonials = [
+  {
+    quote: "Double Cut didn't just film our event — they captured the feeling in the room. Watching it back gave us chills.",
+    name: 'Sarah Chen',
+    company: 'Vancouver Film Festival',
+  },
+  {
+    quote: "Their drone footage turned a simple product shoot into something cinematic. Absolutely next-level work.",
+    name: 'James Ortega',
+    company: 'Pacific Brand Co.',
+  },
+];
+---
+
+<section class="py-24 md:py-32 px-6 bg-warm-light relative overflow-hidden">
+  <!-- Wave top — #262626 from Stats section above -->
+  <div class="absolute top-0 left-0 w-full pointer-events-none z-20" aria-hidden="true">
+    <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto block" preserveAspectRatio="none">
+      <path d="M0 40C240 0 480 80 720 40C960 0 1200 80 1440 40V0H0V40Z" fill="#262626"/>
+    </svg>
+  </div>
+  <!-- Decorative blob — right side -->
+  <div data-blob-drift class="absolute top-20 -right-8 w-[400px] h-[400px] pointer-events-none" aria-hidden="true">
+    <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" class="w-full h-full opacity-[0.03]">
+      <path d="M400 100C460 200 420 380 300 440C180 500 40 400 20 280C0 160 80 40 200 20C320 0 340 0 400 100Z" fill="var(--color-primary)"/>
+    </svg>
+  </div>
+
+  <div class="max-w-5xl mx-auto relative z-10">
+    <span data-animate="fade" class="font-body text-sm uppercase tracking-widest text-[var(--color-primary)] block mb-3 text-center">Testimonials<span class="text-[var(--color-accent-1)] ml-1">.</span></span>
+    <h2 data-animate class="font-display text-6xl md:text-7xl text-[var(--color-bg-dark)] text-center mb-14">
+      What Clients Say
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10" data-stagger>
+      {testimonials.map((t, i) => (
+        <div
+          data-stagger-item
+          data-animate
+          data-wiggle
+          class={`relative rounded-2xl p-8 shadow-sm border-l-4 hover:shadow-md hover:-translate-y-3 transition-all duration-500 ease-out ${i === 0 ? 'bg-[var(--color-accent-2)]/5 border-[var(--color-accent-2)]' : 'bg-white border-[var(--color-primary)]'}`}
+        >
+          <span class={`absolute top-4 right-6 font-display text-7xl opacity-15 leading-none select-none ${i === 0 ? 'text-[var(--color-accent-2)]' : 'text-[var(--color-primary)]'}`}>&ldquo;</span>
+          <blockquote class="relative z-10 font-body text-[var(--color-text-dark)]/80 text-base leading-relaxed mb-6">
+            {t.quote}
+          </blockquote>
+          <div>
+            <p class="font-body font-semibold text-[var(--color-bg-dark)] text-sm">{t.name}</p>
+            <p class="font-body text-[var(--color-text-dark)]/50 text-sm">{t.company}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+  <!-- Wave bottom — #262626 pours into HomeCTA below -->
+  <div class="absolute bottom-0 left-0 w-full pointer-events-none z-20" aria-hidden="true">
+    <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto block" preserveAspectRatio="none">
+      <path d="M0 40C240 80 480 0 720 40C960 80 1200 0 1440 40V80H0V40Z" fill="#262626"/>
+    </svg>
+  </div>
+</section>
