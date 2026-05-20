@@ -16,7 +16,11 @@
       "Bash(python3 -c ' *)",
       "WebFetch(domain:deadpilotdesign.com)",
       "WebFetch(domain:doublevisionnz.com)",
-      "WebFetch(domain:juanmora.co)"
+      "WebFetch(domain:juanmora.co)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git revert *)",
+      "Bash(powershell *)"
     ]
   }
 }

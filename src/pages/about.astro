@@ -47,7 +47,7 @@ const clients = ["Lululemon", "Vancouver Film Festival", "BC Tourism", "ConVanco
 
 <BaseLayout title="About" description="Meet Double Cut Studios — a Vancouver-based production studio built on a love of craft, film, and the belief that every story deserves to be told well.">
   <!-- Hero -->
-  <section class="grain-overlay pt-32 pb-16 md:pb-20 px-6 bg-[var(--color-bg-dark)] min-h-[60vh] flex items-center relative overflow-hidden">
+  <section class="pt-32 pb-16 md:pb-20 px-6 bg-[var(--color-bg-dark)] min-h-[60vh] flex items-center relative overflow-hidden">
     <div class="max-w-7xl mx-auto text-center relative z-20">
       <span data-animate-immediate="fade" data-delay="0" class="font-body text-sm uppercase tracking-widest text-[var(--color-primary)] block mb-4">About Us<span class="text-[var(--color-accent-1)] ml-1">.</span></span>
       <h1 data-animate-immediate data-delay="0.15" class="font-display text-6xl md:text-8xl text-white mb-6">
@@ -57,17 +57,16 @@ const clients = ["Lululemon", "Vancouver Film Festival", "BC Tourism", "ConVanco
         A Vancouver-based production studio built on a love of craft, a background in film, and the belief that every story — big or small — deserves to be told well.
       </p>
     </div>
-
-    <!-- Wavy bottom edge → into light story section -->
-    <div class="absolute bottom-0 left-0 w-full pointer-events-none z-20" aria-hidden="true">
-      <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto block" preserveAspectRatio="none">
-        <path d="M0 20C180 70 360 0 540 50C720 80 900 10 1080 60C1260 80 1380 20 1440 20V80H0V20Z" fill="var(--color-bg-light)"/>
-      </svg>
-    </div>
   </section>
 
   <!-- Our Story — light section -->
-  <section class="py-24 md:py-32 px-6 bg-warm-light relative overflow-hidden">
+  <section class="pt-28 md:pt-36 pb-28 md:pb-36 px-6 bg-warm-light relative overflow-hidden">
+    <!-- Wave top — dark→light transition from hero above -->
+    <div class="absolute top-0 left-0 w-full pointer-events-none z-20" aria-hidden="true">
+      <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto block" preserveAspectRatio="none">
+        <path d="M0 40C240 0 480 80 720 40C960 0 1200 80 1440 40V0H0V40Z" fill="var(--color-bg-dark)"/>
+      </svg>
+    </div>
     <!-- Decorative peach blob — right side -->
     <div data-blob-drift class="absolute top-20 -right-8 w-[400px] h-[400px] pointer-events-none" aria-hidden="true">
       <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" class="w-full h-full opacity-[0.04]">
@@ -97,18 +96,11 @@ const clients = ["Lululemon", "Vancouver Film Festival", "BC Tourism", "ConVanco
         />
       </div>
     </div>
-
-    <!-- Wavy bottom edge → into dark values section -->
-    <div class="absolute bottom-0 left-0 w-full pointer-events-none z-20" aria-hidden="true">
-      <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto block" preserveAspectRatio="none">
-        <path d="M0 30C360 70 720 10 1080 50C1260 65 1380 25 1440 30V80H0V30Z" fill="var(--color-bg-dark)"/>
-      </svg>
-    </div>
   </section>
 
   <!-- What We Believe — dark section -->
-  <section class="grain-overlay pt-28 md:pt-36 pb-24 md:pb-32 px-6 bg-[var(--color-bg-dark)] relative overflow-hidden">
-    <!-- Wavy top edge from light section above -->
+  <section class="pt-28 md:pt-36 pb-28 md:pb-36 px-6 bg-[var(--color-bg-dark)] relative overflow-hidden">
+    <!-- Wave top — light→dark transition from story section above -->
     <div class="absolute top-0 left-0 w-full pointer-events-none z-20" aria-hidden="true">
       <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto block" preserveAspectRatio="none">
         <path d="M0 50C360 10 720 70 1080 30C1260 15 1380 55 1440 50V0H0V50Z" fill="var(--color-bg-light)"/>
@@ -150,18 +142,11 @@ const clients = ["Lululemon", "Vancouver Film Festival", "BC Tourism", "ConVanco
         ))}
       </div>
     </div>
-
-    <!-- Wavy bottom edge → into light process section -->
-    <div class="absolute bottom-0 left-0 w-full pointer-events-none z-20" aria-hidden="true">
-      <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto block" preserveAspectRatio="none">
-        <path d="M0 30C360 70 720 10 1080 50C1260 65 1380 25 1440 30V80H0V30Z" fill="var(--color-bg-light)"/>
-      </svg>
-    </div>
   </section>
 
   <!-- How We Work — light section -->
-  <section class="py-24 md:py-32 px-6 bg-warm-light relative overflow-hidden">
-    <!-- Wavy top edge from dark section above -->
+  <section class="pt-28 md:pt-36 pb-28 md:pb-36 px-6 bg-warm-light relative overflow-hidden">
+    <!-- Wave top — dark→light transition from values section above -->
     <div class="absolute top-0 left-0 w-full pointer-events-none z-20" aria-hidden="true">
       <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto block" preserveAspectRatio="none">
         <path d="M0 50C360 10 720 70 1080 30C1260 15 1380 55 1440 50V0H0V50Z" fill="var(--color-bg-dark)"/>
@@ -202,18 +187,11 @@ const clients = ["Lululemon", "Vancouver Film Festival", "BC Tourism", "ConVanco
         ))}
       </div>
     </div>
-
-    <!-- Wavy bottom edge → into dark trusted-by section -->
-    <div class="absolute bottom-0 left-0 w-full pointer-events-none z-20" aria-hidden="true">
-      <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto block" preserveAspectRatio="none">
-        <path d="M0 30C360 70 720 10 1080 50C1260 65 1380 25 1440 30V80H0V30Z" fill="var(--color-bg-dark)"/>
-      </svg>
-    </div>
   </section>
 
   <!-- Trusted By — dark section -->
-  <section class="grain-overlay pt-28 md:pt-32 pb-20 md:pb-24 px-6 bg-[var(--color-bg-dark)] relative overflow-hidden">
-    <!-- Wavy top edge from light section above -->
+  <section class="pt-28 md:pt-36 pb-20 md:pb-28 px-6 bg-[var(--color-bg-dark)] relative overflow-hidden">
+    <!-- Wave top — light→dark transition from process section above -->
     <div class="absolute top-0 left-0 w-full pointer-events-none z-20" aria-hidden="true">
       <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto block" preserveAspectRatio="none">
         <path d="M0 50C360 10 720 70 1080 30C1260 15 1380 55 1440 50V0H0V50Z" fill="var(--color-bg-light)"/>
@@ -252,7 +230,7 @@ const clients = ["Lululemon", "Vancouver Film Festival", "BC Tourism", "ConVanco
   </section>
 
   <!-- CTA — dark bg, peach heading, outline button -->
-  <section class="grain-overlay py-24 md:py-32 px-6 bg-[var(--color-bg-dark)] relative overflow-hidden">
+  <section class="pt-28 md:pt-36 pb-28 md:pb-36 px-6 bg-[var(--color-bg-dark)] relative overflow-hidden">
     <!-- Decorative peach blob -->
     <div data-blob-drift class="absolute top-1/2 -left-8 w-[450px] h-[450px] pointer-events-none" aria-hidden="true">
       <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" class="w-full h-full opacity-[0.04]">

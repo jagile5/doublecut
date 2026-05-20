@@ -52,7 +52,7 @@ const services = [
 
 <BaseLayout title="Services" description="Double Cut Studios services — event videography, aerial & drone, VFX & CGI, photography, and design partnerships.">
   <!-- Page hero -->
-  <section class="grain-overlay pt-32 pb-16 md:pb-20 px-6 bg-[var(--color-bg-dark)] relative overflow-hidden">
+  <section class="pt-32 pb-12 md:pb-16 px-6 bg-[var(--color-bg-dark)] relative overflow-hidden">
     <!-- Decorative teal blob — top right -->
     <div data-blob-drift class="absolute top-4 -right-12 w-[400px] h-[400px] pointer-events-none" aria-hidden="true">
       <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" class="w-full h-full opacity-[0.04]">
@@ -77,7 +77,7 @@ const services = [
 
   <!-- Service sections -->
   {services.map((service, i) => (
-  <section id={service.id} class={`grain-overlay py-24 md:py-32 px-6 relative overflow-hidden ${i % 2 === 0 ? 'bg-[var(--color-bg-dark)]' : 'bg-[#1e1e1e]'}`}>
+  <section id={service.id} class={`pt-16 pb-28 md:pb-36 px-6 relative overflow-hidden ${i % 2 === 0 ? 'bg-[var(--color-bg-dark)]' : 'bg-[#1e1e1e]'}`}>
     {/* Decorative blobs — alternate teal/peach positions for variety */}
     {i % 2 === 0 && (
     <div data-blob-drift class="absolute bottom-4 -right-8 w-[350px] h-[350px] pointer-events-none" aria-hidden="true">
@@ -144,7 +144,7 @@ const services = [
   ))}
 
   <!-- Bottom CTA -->
-  <section class="grain-overlay py-24 md:py-32 px-6 bg-[var(--color-bg-dark)] relative overflow-hidden">
+  <section class="py-24 md:py-32 px-6 bg-[var(--color-bg-dark)] relative overflow-hidden">
     <!-- Decorative peach blob — left side -->
     <div data-blob-drift class="absolute top-1/2 -left-8 w-[450px] h-[450px] pointer-events-none" aria-hidden="true">
       <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" class="w-full h-full opacity-[0.04]">
