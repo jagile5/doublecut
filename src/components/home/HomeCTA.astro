@@ -1,22 +1,40 @@
 ---
-import WaveDivider from '../WaveDivider.astro';
 ---
 
-<section class="py-24 md:py-32 px-6 bg-[var(--color-accent-2)] relative overflow-hidden">
-<div class="max-w-4xl mx-auto text-center relative z-10">
-<h2 data-animate class="font-display text-5xl md:text-7xl mb-6 text-[var(--color-bg-dark)]">
-Ready to Make Something Great?
-</h2>
-<p data-animate class="font-body text-[var(--color-bg-dark)]/60 text-lg mb-10 max-w-xl mx-auto">
-Whether it's a single shoot or a full creative campaign, we'd love to hear about your project.
-</p>
-<a
-href="/contact"
-data-animate
-class="inline-block px-10 py-4 border-2 border-[var(--color-bg-dark)] text-[var(--color-bg-dark)] font-display text-2xl tracking-wider rounded-full hover:bg-[var(--color-bg-dark)] hover:text-[var(--color-accent-2)] hover:-translate-y-3 transition-all duration-500 ease-out"
->
-Get in Touch
-</a>
-</div>
-<WaveDivider fill="#0f0f0f" />
+<section class="grain-overlay py-24 md:py-32 px-6 bg-[var(--color-bg-dark)] relative overflow-hidden">
+  <!-- Wave top — #F7F7F7 from Testimonials section above -->
+  <div class="absolute top-0 left-0 w-full pointer-events-none z-20" aria-hidden="true">
+    <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto block" preserveAspectRatio="none">
+      <path d="M0 40C240 0 480 80 720 40C960 0 1200 80 1440 40V0H0V40Z" fill="#F7F7F7"/>
+    </svg>
+  </div>
+  <!-- Decorative peach blob -->
+  <div data-blob-drift class="absolute top-1/2 -left-8 w-[450px] h-[450px] pointer-events-none" aria-hidden="true">
+    <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" class="w-full h-full opacity-[0.04]">
+      <path d="M100 400C20 300 40 120 180 60C320 0 480 80 490 220C500 360 380 480 240 490C100 500 180 500 100 400Z" fill="var(--color-accent-2)"/>
+    </svg>
+  </div>
+  <!-- Decorative teal blob -->
+  <div data-blob-drift class="absolute top-4 -right-8 w-[300px] h-[300px] pointer-events-none" aria-hidden="true">
+    <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" class="w-full h-full opacity-[0.03]">
+      <path d="M250 50C340 20 450 100 470 220C490 340 400 450 280 470C160 490 50 400 30 280C10 160 160 80 250 50Z" fill="var(--color-primary)"/>
+    </svg>
+  </div>
+
+  <div class="max-w-4xl mx-auto text-center relative z-10">
+    <h2 data-animate class="font-display text-5xl md:text-7xl mb-6" style="color: var(--color-accent-2);">
+      Ready to Make Something Great?
+    </h2>
+    <p data-animate class="font-body text-white/50 text-lg mb-10 max-w-xl mx-auto">
+      Whether it's a single shoot or a full creative campaign, we'd love to hear about your project.
+    </p>
+    <a
+      href="/contact"
+      data-animate
+      class="inline-block px-10 py-4 border-2 text-[var(--color-accent-2)] font-display text-2xl tracking-wider rounded-full hover:bg-[var(--color-accent-2)] hover:text-[var(--color-bg-dark)] hover:-translate-y-3 transition-all duration-500 ease-out"
+      style="border-color: var(--color-accent-2);"
+    >
+      Get in Touch
+    </a>
+  </div>
 </section>
