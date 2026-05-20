@@ -1,159 +1,129 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import WaveDivider from '../components/WaveDivider.astro';
 
 const categories = ['All', 'Video', 'Aerial', 'CGI', 'Photo'];
 
 const projects = [
-  { title: 'Vancouver Gala Foundation', category: 'Video', tag: 'Event · Video', image: 'https://picsum.photos/seed/dc1/800/600' },
-  { title: 'Coast Mountain Aerials', category: 'Aerial', tag: 'Aerial · Drone', image: 'https://picsum.photos/seed/dc2/800/600' },
-  { title: 'Future Tech Product Launch', category: 'CGI', tag: 'CGI · VFX', image: 'https://picsum.photos/seed/dc3/800/600' },
-  { title: 'Coal Harbour Wedding', category: 'Video', tag: 'Event · Video', image: 'https://picsum.photos/seed/dc4/800/600' },
-  { title: 'Gastown Brand Film', category: 'Aerial', tag: 'Aerial · Drone', image: 'https://picsum.photos/seed/dc5/800/600' },
-  { title: 'Luxe Campaign Stills', category: 'Photo', tag: 'Photography', image: 'https://picsum.photos/seed/dc6/800/600' },
+{ title: 'Vancouver Gala Foundation', category: 'Video', tag: 'Event · Video', image: 'https://picsum.photos/seed/dc1/800/600' },
+{ title: 'Coast Mountain Aerials', category: 'Aerial', tag: 'Aerial · Drone', image: 'https://picsum.photos/seed/dc2/800/600' },
+{ title: 'Future Tech Product Launch', category: 'CGI', tag: 'CGI · VFX', image: 'https://picsum.photos/seed/dc3/800/600' },
+{ title: 'Coal Harbour Wedding', category: 'Video', tag: 'Event · Video', image: 'https://picsum.photos/seed/dc4/800/600' },
+{ title: 'Gastown Brand Film', category: 'Aerial', tag: 'Aerial · Drone', image: 'https://picsum.photos/seed/dc5/800/600' },
+{ title: 'Luxe Campaign Stills', category: 'Photo', tag: 'Photography', image: 'https://picsum.photos/seed/dc6/800/600' },
 ];
 ---
 
 <BaseLayout title="Work" description="Explore the portfolio of Double Cut Studios — event video, aerial, CGI, and photography projects.">
-  <!-- Page hero -->
-  <section class="grain-overlay pt-32 pb-16 md:pb-20 px-6 bg-[var(--color-bg-dark)] relative overflow-hidden">
-    <!-- Decorative teal blob — top left -->
-    <div data-blob-drift class="absolute top-4 left-4 w-[350px] h-[350px] pointer-events-none" aria-hidden="true">
-      <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" class="w-full h-full opacity-[0.04]">
-        <path d="M50 250C20 160 100 50 220 30C340 10 450 100 470 220C490 340 400 450 280 470C160 490 80 340 50 250Z" fill="var(--color-primary)"/>
-      </svg>
-    </div>
-    <!-- Decorative peach blob — bottom right -->
-    <div data-blob-drift class="absolute bottom-4 -right-8 w-[300px] h-[300px] pointer-events-none" aria-hidden="true">
-      <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" class="w-full h-full opacity-[0.03]">
-        <path d="M400 100C460 200 420 380 300 440C180 500 40 400 20 280C0 160 80 40 200 20C320 0 340 0 400 100Z" fill="var(--color-accent-2)"/>
-      </svg>
-    </div>
+<!-- Page hero -->
+<section class="grain-overlay pt-32 pb-16 md:pb-20 px-6 bg-[var(--color-bg-dark)] relative overflow-hidden">
+<div class="max-w-7xl mx-auto text-center relative z-10">
+<span data-animate="fade" class="font-body text-sm uppercase tracking-widest text-[var(--color-primary)] block mb-3">Portfolio<span class="text-[var(--color-accent-1)] ml-1">.</span></span>
+<h1 data-animate class="font-display text-6xl md:text-8xl text-white mb-4">Our Work</h1>
+<p data-animate class="font-body text-white/50 text-lg max-w-xl mx-auto">
+A selection of projects across every discipline we offer.
+</p>
+</div>
+<WaveDivider fill="#1a1a1a" />
+</section>
 
-    <div class="max-w-7xl mx-auto text-center relative z-10">
-      <span data-animate="fade" class="font-body text-sm uppercase tracking-widest text-[var(--color-primary)] block mb-3">Portfolio<span class="text-[var(--color-accent-1)] ml-1">.</span></span>
-      <h1 data-animate class="font-display text-6xl md:text-8xl text-white mb-4">Our Work</h1>
-      <p data-animate class="font-body text-white/50 text-lg max-w-xl mx-auto">
-        A selection of projects across every discipline we offer.
-      </p>
-    </div>
-  </section>
+<!-- Project grid -->
+<section class="grain-overlay px-6 pt-12 pb-24 md:pb-32 bg-[#1a1a1a] relative overflow-hidden">
+<div id="work-filters" class="max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-3 mb-12 relative z-20">
+{categories.map(cat => (
+<button
+data-filter={cat}
+class={`work-filter-btn px-5 py-2 font-body text-sm uppercase tracking-wider rounded-full border transition-all duration-500 ease-out ${
+cat === 'All'
+? 'bg-[var(--color-primary)] text-[var(--color-bg-dark)] border-[var(--color-primary)]'
+: 'border-white/20 text-white/60 hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]'
+}`}
+>
+{cat}
+</button>
+))}
+</div>
 
-  <!-- Project grid -->
-  <section class="grain-overlay px-6 pt-12 pb-24 md:pb-32 bg-[var(--color-bg-dark)] relative overflow-hidden">
-    <!-- Decorative teal blob — right side -->
-    <div data-blob-drift class="absolute top-1/4 -right-8 w-[350px] h-[350px] pointer-events-none" aria-hidden="true">
-      <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" class="w-full h-full opacity-[0.03]">
-        <path d="M400 100C460 200 420 380 300 440C180 500 40 400 20 280C0 160 80 40 200 20C320 0 340 0 400 100Z" fill="var(--color-primary)"/>
-      </svg>
-    </div>
-    <!-- Decorative peach blob — left bottom -->
-    <div data-blob-drift class="absolute bottom-4 -left-8 w-[300px] h-[300px] pointer-events-none" aria-hidden="true">
-      <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" class="w-full h-full opacity-[0.03]">
-        <path d="M80 400C10 300 60 100 200 40C340 -20 490 80 490 220C490 360 380 490 240 490C100 490 150 500 80 400Z" fill="var(--color-accent-2)"/>
-      </svg>
-    </div>
-
-    <div id="work-filters" class="max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-3 mb-12 relative z-20">
-      {categories.map(cat => (
-      <button
-        data-filter={cat}
-        class={`work-filter-btn px-5 py-2 font-body text-sm uppercase tracking-wider rounded-full border transition-all duration-500 ease-out ${
-          cat === 'All'
-            ? 'bg-[var(--color-primary)] text-[var(--color-bg-dark)] border-[var(--color-primary)]'
-            : 'border-white/20 text-white/60 hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]'
-        }`}
-      >
-        {cat}
-      </button>
-      ))}
-    </div>
-
-    <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10" id="work-grid" data-stagger>
-      {projects.map(project => (
-      <div
-        data-stagger-item
-        data-animate
-        data-wiggle
-        data-category={project.category}
-        class="work-card group block rounded-2xl overflow-hidden bg-[#1a1a1a] hover:-translate-y-3 transition-all duration-500 ease-out"
-      >
-        <div class="aspect-[4/3] overflow-hidden relative">
-          <img
-            src={project.image}
-            alt={project.title}
-            loading="lazy"
-            class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"
-          />
-          <span class="absolute top-3 left-3 px-3 py-1 bg-[var(--color-accent-1)] text-white font-body text-xs uppercase tracking-wider rounded-full">
-            {project.tag}
-          </span>
-        </div>
-        <div class="p-5">
-          <h3 class="font-display text-2xl text-white mt-1">
-            {project.title}
-          </h3>
-        </div>
-      </div>
-      ))}
-    </div>
-
-    <!-- Wavy bottom — into footer -->
-    <div class="absolute bottom-0 left-0 w-full pointer-events-none z-20" aria-hidden="true">
-      <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto block" preserveAspectRatio="none">
-        <path d="M0 40C240 80 480 0 720 40C960 80 1200 0 1440 40V80H0V40Z" fill="#1a1a1a"/>
-      </svg>
-    </div>
-  </section>
+<div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10" id="work-grid" data-stagger>
+{projects.map(project => (
+<div
+data-stagger-item
+data-animate
+data-wiggle
+data-category={project.category}
+class="work-card group block rounded-2xl overflow-hidden bg-[#1a1a1a] hover:-translate-y-3 transition-all duration-500 ease-out"
+>
+<div class="aspect-[4/3] overflow-hidden relative">
+<img
+src={project.image}
+alt={project.title}
+loading="lazy"
+class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"
+/>
+<span class="absolute top-3 left-3 px-3 py-1 bg-[var(--color-accent-1)] text-white font-body text-xs uppercase tracking-wider rounded-full">
+{project.tag}
+</span>
+</div>
+<div class="p-5">
+<h3 class="font-display text-2xl text-white mt-1">
+{project.title}
+</h3>
+</div>
+</div>
+))}
+</div>
+<WaveDivider fill="#0f0f0f" />
+</section>
 </BaseLayout>
 
 <script>
 function initWorkFilters() {
-  const filterContainer = document.getElementById('work-filters');
-  const grid = document.getElementById('work-grid');
-  if (!filterContainer || !grid) return;
+const filterContainer = document.getElementById('work-filters');
+const grid = document.getElementById('work-grid');
+if (!filterContainer || !grid) return;
 
-  const buttons = filterContainer.querySelectorAll('.work-filter-btn');
-  const cards = grid.querySelectorAll('.work-card');
+const buttons = filterContainer.querySelectorAll('.work-filter-btn');
+const cards = grid.querySelectorAll('.work-card');
 
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const filter = (btn as HTMLElement).dataset.filter;
+buttons.forEach(btn => {
+btn.addEventListener('click', () => {
+const filter = (btn as HTMLElement).dataset.filter;
 
-      // Update active button styles
-      buttons.forEach(b => {
-        b.classList.remove('bg-[var(--color-primary)]', 'text-[var(--color-bg-dark)]', 'border-[var(--color-primary)]');
-        b.classList.add('border-white/20', 'text-white/60');
-      });
-      btn.classList.add('bg-[var(--color-primary)]', 'text-[var(--color-bg-dark)]', 'border-[var(--color-primary)]');
-      btn.classList.remove('border-white/20', 'text-white/60');
+// Update active button styles
+buttons.forEach(b => {
+b.classList.remove('bg-[var(--color-primary)]', 'text-[var(--color-bg-dark)]', 'border-[var(--color-primary)]');
+b.classList.add('border-white/20', 'text-white/60');
+});
+btn.classList.add('bg-[var(--color-primary)]', 'text-[var(--color-bg-dark)]', 'border-[var(--color-primary)]');
+btn.classList.remove('border-white/20', 'text-white/60');
 
-      // Filter cards with fade
-      cards.forEach(card => {
-        const cardCategory = (card as HTMLElement).dataset.category;
-        const shouldShow = filter === 'All' || cardCategory === filter;
+// Filter cards with fade
+cards.forEach(card => {
+const cardCategory = (card as HTMLElement).dataset.category;
+const shouldShow = filter === 'All' || cardCategory === filter;
 
-        if (shouldShow) {
-          (card as HTMLElement).style.opacity = '0';
-          (card as HTMLElement).style.transform = 'translateY(16px)';
-          (card as HTMLElement).style.display = '';
-          requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-              (card as HTMLElement).style.opacity = '1';
-              (card as HTMLElement).style.transform = 'translateY(0)';
-            });
-          });
-        } else {
-          (card as HTMLElement).style.opacity = '0';
-          (card as HTMLElement).style.transform = 'translateY(16px)';
-          setTimeout(() => {
-            if ((card as HTMLElement).style.opacity === '0') {
-              (card as HTMLElement).style.display = 'none';
-            }
-          }, 500);
-        }
-      });
-    });
-  });
+if (shouldShow) {
+(card as HTMLElement).style.opacity = '0';
+(card as HTMLElement).style.transform = 'translateY(16px)';
+(card as HTMLElement).style.display = '';
+requestAnimationFrame(() => {
+requestAnimationFrame(() => {
+(card as HTMLElement).style.opacity = '1';
+(card as HTMLElement).style.transform = 'translateY(0)';
+});
+});
+} else {
+(card as HTMLElement).style.opacity = '0';
+(card as HTMLElement).style.transform = 'translateY(16px)';
+setTimeout(() => {
+if ((card as HTMLElement).style.opacity === '0') {
+(card as HTMLElement).style.display = 'none';
+}
+}, 500);
+}
+});
+});
+});
 }
 
 initWorkFilters();
@@ -162,6 +132,6 @@ document.addEventListener('astro:page-load', initWorkFilters);
 
 <style>
 .work-card {
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 </style>

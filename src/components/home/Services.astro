@@ -1,88 +1,66 @@
 ---
+import WaveDivider from '../WaveDivider.astro';
+
 const services = [
-  {
-    title: 'Event Videography',
-    description: 'From intimate celebrations to massive corporate events, we capture every moment with cinematic precision.',
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z" /></svg>`,
-    href: '/services#event-videography',
-  },
-  {
-    title: 'Aerial & Drone',
-    description: 'Breathtaking perspectives that elevate any project — sweeping landscapes, dynamic tracking shots, and more.',
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" /></svg>`,
-    href: '/services#aerial-drone',
-  },
-  {
-    title: 'VFX & CGI',
-    description: 'Reality is just the starting point. We build worlds, enhance footage, and deliver visual magic.',
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z" /></svg>`,
-    href: '/services#vfx-cgi',
-  },
-  {
-    title: 'Photography',
-    description: 'Every frame tells a story. Our photography captures emotion, detail, and atmosphere in equal measure.',
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Z" /></svg>`,
-    href: '/services#photography',
-  },
+{
+title: 'Event Videography',
+description: 'From intimate celebrations to massive corporate events, we capture every moment with cinematic precision.',
+icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z" /></svg>`,
+href: '/services#event-videography',
+},
+{
+title: 'Aerial & Drone',
+description: 'Breathtaking perspectives that elevate any project — sweeping landscapes, dynamic tracking shots, and more.',
+icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" /></svg>`,
+href: '/services#aerial-drone',
+},
+{
+title: 'VFX & CGI',
+description: 'Reality is just the starting point. We build worlds, enhance footage, and deliver visual magic.',
+icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z" /></svg>`,
+href: '/services#vfx-cgi',
+},
+{
+title: 'Photography',
+description: 'Every frame tells a story. Our photography captures emotion, detail, and atmosphere in equal measure.',
+icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Z" /></svg>`,
+href: '/services#photography',
+},
 ];
 ---
 
 <section id="services" class="grain-overlay py-24 md:py-32 px-6 bg-[#1e1e1e] overflow-hidden relative">
-  <!-- Wave top — #1e1e1e peeks into dark section above -->
-  <div class="absolute top-0 left-0 w-full pointer-events-none z-20" aria-hidden="true">
-    <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto block" preserveAspectRatio="none">
-      <path d="M0 40C240 0 480 80 720 40C960 0 1200 80 1440 40V0H0V40Z" fill="#1e1e1e"/>
-    </svg>
-  </div>
+<div class="max-w-7xl mx-auto relative z-10">
+<span data-animate="fade" class="font-body text-sm uppercase tracking-widest text-[var(--color-primary)] block mb-3 text-center">Services<span class="text-[var(--color-accent-1)] ml-1">.</span></span>
+<h2 data-animate class="font-display text-6xl md:text-7xl text-white text-center mb-4">
+What We Do
+</h2>
+<p data-animate class="font-body text-white/50 text-center mb-14 max-w-2xl mx-auto">
+Four disciplines. One relentless creative team.
+</p>
 
-  <!-- Decorative teal blob — top right -->
-  <div data-blob-drift class="absolute top-4 -right-12 w-[500px] h-[500px] pointer-events-none" aria-hidden="true">
-    <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" class="w-full h-full opacity-[0.04]">
-      <path d="M250 50C340 20 450 100 470 220C490 340 400 450 280 470C160 490 50 400 30 280C10 160 160 80 250 50Z" fill="var(--color-primary)"/>
-    </svg>
-  </div>
-  <!-- Decorative peach blob — bottom left -->
-  <div data-blob-drift class="absolute bottom-4 -left-8 w-[350px] h-[350px] pointer-events-none" aria-hidden="true">
-    <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" class="w-full h-full opacity-[0.03]">
-      <path d="M80 400C10 300 60 100 200 40C340 -20 490 80 490 220C490 360 380 490 240 490C100 490 150 500 80 400Z" fill="var(--color-accent-2)"/>
-    </svg>
-  </div>
-  <div class="max-w-7xl mx-auto relative z-10">
-    <span data-animate="fade" class="font-body text-sm uppercase tracking-widest text-[var(--color-primary)] block mb-3 text-center">Services<span class="text-[var(--color-accent-1)] ml-1">.</span></span>
-    <h2 data-animate class="font-display text-6xl md:text-7xl text-white text-center mb-4">
-      What We Do
-    </h2>
-    <p data-animate class="font-body text-white/50 text-center mb-14 max-w-2xl mx-auto">
-      Four disciplines. One relentless creative team.
-    </p>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" data-stagger>
+{services.map(service => (
+<div
+data-stagger-item
+data-animate
+data-wiggle
+class="group bg-white/5 rounded-2xl p-8 border border-white/5 hover:border-[var(--color-primary)]/30 hover:-translate-y-3 hover:border-t-[var(--color-primary)] hover:border-t-4 transition-all duration-500 ease-out"
+>
+<div class="icon-wrap text-[var(--color-primary)] mb-5 transition-transform duration-500 ease-out group-hover:scale-[1.03]" set:html={service.icon} />
+<h3 class="font-display text-2xl text-white mb-3">
+{service.title}
+</h3>
+<p class="font-body text-sm text-white/50 mb-5 leading-relaxed">
+{service.description}
+</p>
+<a href={service.href} class="font-body text-sm font-semibold text-[var(--color-accent-1)] group-hover:underline transition-colors duration-500 ease-out">
+Explore &rarr;
+</a>
+</div>
+))}
+</div>
+</div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" data-stagger>
-      {services.map(service => (
-        <div
-          data-stagger-item
-          data-animate
-          data-wiggle
-          class="group bg-white/5 rounded-2xl p-8 border border-white/5 hover:border-[var(--color-primary)]/30 hover:-translate-y-3 hover:border-t-[var(--color-primary)] hover:border-t-4 transition-all duration-500 ease-out"
-        >
-          <div class="icon-wrap text-[var(--color-primary)] mb-5 transition-transform duration-500 ease-out group-hover:scale-[1.03]" set:html={service.icon} />
-          <h3 class="font-display text-2xl text-white mb-3">
-            {service.title}
-          </h3>
-          <p class="font-body text-sm text-white/50 mb-5 leading-relaxed">
-            {service.description}
-          </p>
-          <a href={service.href} class="font-body text-sm font-semibold text-[var(--color-accent-1)] group-hover:underline transition-colors duration-500 ease-out">
-            Explore &rarr;
-          </a>
-        </div>
-      ))}
-    </div>
-  </div>
-
-  <!-- Wave bottom — #262626 pours into Portfolio below -->
-  <div class="absolute bottom-0 left-0 w-full pointer-events-none z-20" aria-hidden="true">
-    <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto block" preserveAspectRatio="none">
-      <path d="M0 40C240 80 480 0 720 40C960 80 1200 0 1440 40V80H0V40Z" fill="#262626"/>
-    </svg>
-  </div>
+<WaveDivider fill="#262626" />
 </section>
