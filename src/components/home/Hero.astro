@@ -21,7 +21,12 @@
   </div>
 
   <!-- Parallax gradient background (fallback/dither over video) -->
-  <div class="hero-bg hero-gradient absolute inset-0 will-change-transform z-10"></div>
+  <div class="hero-bg absolute inset-0 will-change-transform z-10">
+    <!-- Dark overlay — simple linear opacity transition, bands less -->
+    <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(38,38,38,0.55) 0%, rgba(38,38,38,0.3) 50%, rgba(38,38,38,0.05) 100%);"></div>
+    <!-- Teal accent — radial from bottom-right, smoothest possible gradient -->
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse 80% 70% at 85% 90%, rgba(20,155,155,0.12) 0%, rgba(20,155,155,0.05) 35%, rgba(20,120,120,0.02) 60%, transparent 100%);"></div>
+  </div>
 
   <div class="relative z-20 text-center px-6 max-w-4xl mx-auto">
     <p
@@ -104,24 +109,7 @@
 </script>
 
 <style>
-.hero-gradient {
-  background: linear-gradient(
-    135deg,
-    rgba(38,38,38,0.6) 0%,
-    rgba(37,38,38,0.58) 10%,
-    rgba(35,39,39,0.53) 20%,
-    rgba(32,44,44,0.46) 30%,
-    rgba(29,50,50,0.39) 40%,
-    rgba(25,57,57,0.32) 50%,
-    rgba(22,66,66,0.25) 60%,
-    rgba(20,100,100,0.18) 70%,
-    rgba(20,130,130,0.12) 80%,
-    rgba(20,155,155,0.08) 90%,
-    rgba(20,155,155,0.06) 100%
-  );
-}
-/* Noise dither overlay — breaks up gradient banding by adding sub-pixel variation */
-.hero-gradient::after {
+.hero-bg::after {
   content: '';
   position: absolute;
   inset: 0;
