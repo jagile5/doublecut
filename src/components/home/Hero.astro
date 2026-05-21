@@ -21,7 +21,7 @@
   </div>
 
   <!-- Parallax gradient background (fallback/dither over video) -->
-  <div class="hero-bg absolute inset-0 will-change-transform z-10" style="background: linear-gradient(135deg, #26262699 0%, #262626aa 25%, #24333377 50%, #1a5c5c44 75%, #149B9B11 100%); filter: blur(0px);"></div>
+  <div class="hero-bg hero-gradient absolute inset-0 will-change-transform z-10"></div>
 
   <div class="relative z-20 text-center px-6 max-w-4xl mx-auto">
     <p
@@ -102,3 +102,32 @@
     }, 5000);
   }
 </script>
+
+<style>
+.hero-gradient {
+  background: linear-gradient(
+    135deg,
+    rgba(38,38,38,0.6) 0%,
+    rgba(37,38,38,0.58) 10%,
+    rgba(35,39,39,0.53) 20%,
+    rgba(32,44,44,0.46) 30%,
+    rgba(29,50,50,0.39) 40%,
+    rgba(25,57,57,0.32) 50%,
+    rgba(22,66,66,0.25) 60%,
+    rgba(20,100,100,0.18) 70%,
+    rgba(20,130,130,0.12) 80%,
+    rgba(20,155,155,0.08) 90%,
+    rgba(20,155,155,0.06) 100%
+  );
+}
+/* Noise dither overlay — breaks up gradient banding by adding sub-pixel variation */
+.hero-gradient::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+  pointer-events: none;
+}
+</style>

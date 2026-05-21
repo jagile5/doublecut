@@ -20,7 +20,11 @@
       "Bash(git add *)",
       "Bash(git commit *)",
       "Bash(git revert *)",
-      "Bash(powershell *)"
+      "Bash(powershell *)",
+      "WebFetch(domain:www.gentlerain.ai)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raunakongithub.github.io)",
+      "Bash(timeout 8 cmd /c \"npx astro dev --port 4321 2>&1\")"
     ]
   }
 }
